@@ -29,6 +29,15 @@ services:
     depends_on:
       - elasticsearch
 
+  packetbeat:
+    build:
+      context: packetbeat/
+    volumes:
+      - ./packetbeat/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml:ro
+    cap_add:
+      - NET_ADMIN
+    network_mode: "host"
+
   kibana:
     build:
       context: kibana/
