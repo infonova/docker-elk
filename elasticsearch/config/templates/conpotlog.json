@@ -1,0 +1,33 @@
+{
+    "order": 1,
+    "index_patterns": [
+      "conpotlog-*"
+    ],
+    "settings": {
+      "index": {
+        "mapping": {
+          "total_fields": {
+            "limit": "10000"
+          }
+        },
+        "refresh_interval": "5s",
+        "number_of_routing_shards": "30",
+        "number_of_shards": "1"
+      }
+    },
+    "mappings": {
+      "doc": {
+        "properties": {
+          "geoip": {
+            "properties": {
+              "ip": { "type": "ip" },
+              "location" : { "type" : "geo_point" },
+              "latitude" : { "type" : "half_float" },
+              "longitude" : { "type" : "half_float" }
+            }
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }
